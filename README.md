@@ -31,5 +31,5 @@ Para especificar puerto agregar el puerto al final del comando.
 - [X] Regla Falsa
 - [X] Punto Fijo
 - [X] Secante
-- [] Raices Multiples
+- [X] Raices Multiples
 - [X] Newton
