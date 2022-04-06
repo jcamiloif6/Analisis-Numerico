@@ -1,0 +1,7 @@
+asgiref==3.5.0
+backports.zoneinfo==0.2.1
+Django==4.0.3
+mpmath==1.2.1
+numpy==1.22.3
+sqlparse==0.4.2
+sympy==1.10.1
