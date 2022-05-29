@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples
+from methods.utils import biseccion, newton, puntofijo, busquedasincrementales,
+                          reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple,
+                          crout, doolittle, gaussseidel, jacobi
 
 # Create your views here.
 def index(request):
@@ -78,5 +80,59 @@ def raicesmultiples(request):
     nMax = float(request.GET['nMax'])
 
     response = raicesmultiples.calcular(fn, df, d2f, x0, tol, nMax)
+
+    return JsonResponse(response)
+
+def gauss_simple(request):
+    A = request.GET['A']
+    b = request.GET['b']
+
+    response = eliminaciongaussianasimple.calcular(A, b)
+
+    return JsonResponse(response)
+
+def crout(request):
+    A = request.GET['A']
+    b = request.GET['b']
+
+    response = crout.calcular(A, b)
+
+    return JsonResponse(response)
+
+def doolittle(request):
+    A = request.GET['A']
+    b = request.GET['b']
+
+    response = doolittle.calcular(A, b)
+
+    return JsonResponse(response)
+
+def cholesky(request):
+    A = request.GET['A']
+    b = request.GET['b']
+
+    response = cholesky.calcular(A, b)
+
+    return JsonResponse(response)
+
+def gauss_seidel(request):
+    A = request.GET['A']
+    b = request.GET['b']
+    x = request.GET['x']
+    tol = request.GET['tol']
+    nMax = request.GET['nMax']
+
+    response = gaussseidel.calcular(A, b, x, tol, nMax)
+
+    return JsonResponse(response)
+
+def jacobi(request):
+    A = request.GET['A']
+    b = request.GET['b']
+    x = request.GET['x']
+    tol = request.GET['tol']
+    nMax = request.GET['nMax']
+
+    response = jacobi.calcular(A, b, x, tol, nMax)
 
     return JsonResponse(response)

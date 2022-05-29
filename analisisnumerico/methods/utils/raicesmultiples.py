@@ -29,3 +29,5 @@ def calcular(fn, df, d2f, x0, tol, nMax):
         answer["pasos"].append('iteracion (' + ite + ') x=' + x_actual + ', error=' + error)
         
     answer["response"] = 'Finalizado en iteracion (' + ite + ') x=' + x_actual + ', error=' + error
+
+    return answer

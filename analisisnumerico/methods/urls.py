@@ -11,4 +11,11 @@ urlpatterns = [
     path('reglafalsa', views.reglafalsa, name='reglafalsa'),
     path('secante', views.secante, name='secante'),
     path('raicesmultiples', views.raicesmultiples, name='raicesmultiples'),
+    path('gauss-simple', views., name=''),
+    path('factorizacion-lu-simple', views.gauss_simple, name='gauss_simple'),
+    path('crout', views.crout, name='crout'),
+    path('doolittle', views.doolittle, name='doolittle'),
+    path('cholesky', views.cholesky, name='cholesky'),
+    path('gauss-seidel', views.gauss_seidel, name='gauss_seidel'),
+    path('jacobi', views.jacobi, name='jacobi'),
 ]

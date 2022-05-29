@@ -31,3 +31,5 @@ def calcular(fn, a, b, tol, nMax):
         ite += 1
         
     answer["response"] = 'Finalizado en iteracion (' + ite + ') x=' + pm + ', error=' + error
+
+    return answer

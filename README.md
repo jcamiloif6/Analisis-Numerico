@@ -33,3 +33,10 @@ Para especificar puerto agregar el puerto al final del comando.
 - [X] Secante
 - [X] Raices Multiples
 - [X] Newton
+- [X] Eliminación Gaussiana Simple
+- [X] Factorización LU con Eliminación Gaussiana Simple
+- [X] Crout
+- [X] Doolittle
+- [X] Cholesky
+- [X] Gauss-Seidel
+- [X] Jacobi

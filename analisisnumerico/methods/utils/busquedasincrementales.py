@@ -29,3 +29,5 @@ def calcular(fn, x0, h, nMax):
         f_actual = f(x_actual)
         ite += 1
     answer["response"] = 'Finalizado en iteracion (' + ite + '): a=' + x_anterior + ', b=' + x_actual
+
+    return answer

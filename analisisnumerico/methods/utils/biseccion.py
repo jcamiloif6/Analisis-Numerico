@@ -28,3 +28,5 @@ def calcular (a, b, crit, fn):
         answer["response"] = "El valor de x es " + round(xr, 9) + " con un error de " + ea
     else:
         answer["pasos"].append("{:^10} {:^10} {:^10} {:^10} {:^10}".format("i", "a", "b", "xr", "ea"))
+    
+    return answer
