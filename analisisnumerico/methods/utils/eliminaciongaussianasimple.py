@@ -5,7 +5,7 @@ def calcular(A, b):
         "response": "",
         "pasos": []}
     n = len(A[0])
-    M=[A b]
+    M=[A, b]
 
     for i in range(n):
         if M[i][i] == 0:
