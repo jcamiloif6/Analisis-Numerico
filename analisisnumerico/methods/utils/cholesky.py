@@ -1,3 +1,4 @@
+from cmath import sqrt
 import numpy as np
 from methods.utils import sustitucionregresiva
 from methods.utils import  sustitucionprogresiva
@@ -19,9 +20,9 @@ def calcular(A, b):
             aux2 = sum(L[i][k] * U[k][j] for k in range(1, i-1))
             L[j][i] = (A[j][i] - aux2) / U[i][i]
 
-        for j range(i, n):
+        for j in range(i, n):
             aux3 = sum(L[i][k] * U[k][j] for k in range(1, i-1))
-            L[i][j] = (A[i][j] - aux3) / L[k][k]
+            L[i][j] = (A[i][j] - aux3) / L[i][i]
         answer["pasos"].append({"A": A,
                                 "L": L,
                                 "U": U})

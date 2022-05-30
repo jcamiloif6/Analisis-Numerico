@@ -8,5 +8,5 @@ def calcular(M):
     for i in range(n-1, -1, -1):
         z[i] = z[i] / M[i][i]
         for j in range(i+1, -1, -1):
-            U[i] -= z[i] * M[i][j]
+            z[i] -= z[i] * M[i][j]
     return z

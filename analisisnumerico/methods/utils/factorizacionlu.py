@@ -2,7 +2,7 @@ import numpy as np
 from methods.utils import sustitucionregresiva
 from methods.utils import  sustitucionprogresiva
 
-def calcular(M, b):
+def calcular(A, b):
     answer = {
         "response": "",
         "pasos": []}

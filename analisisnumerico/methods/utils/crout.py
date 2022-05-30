@@ -18,9 +18,9 @@ def calcular(A, b):
             aux = sum(L[i][k] * U[k][j] for k in range(1, i-1))
             L[j][i] = A[j][i] - aux
 
-        for j range(i, n):
+        for j in range(i, n):
             aux2 = sum(L[i][k] * U[k][j] for k in range(1, i-1))
-            U[i][j] = (A[i][j] - aux2) / L[k][k]
+            U[i][j] = (A[i][j] - aux2) / L[i][i]
         answer["pasos"].append({"A": A,
                                 "L": L,
                                 "U": U})
