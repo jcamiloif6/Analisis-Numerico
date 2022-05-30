@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
-from methods.utils import biseccion, newton, puntofijo, busquedasincrementales,
-                          reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple,
-                          crout, doolittle, gaussseidel, jacobi
+from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple, factorizacionlu, crout, doolittle, gaussseidel, jacobi
 
 # Create your views here.
 def index(request):
@@ -88,6 +86,14 @@ def gauss_simple(request):
     b = request.GET['b']
 
     response = eliminaciongaussianasimple.calcular(A, b)
+
+    return JsonResponse(response)
+
+def fac_lu_simple(request):
+    A = request.GET['A']
+    b = request.GET['b']
+
+    response = factorizacionlu.calcular(A, b)
 
     return JsonResponse(response)
 
