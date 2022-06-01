@@ -7,37 +7,39 @@ def calcular(A, b):
         "response": "",
         "pasos": []}
     
-    n = len(M[0])
-    L = np.eye(n)
-    U = np.zeros(n)
-    M=A
+    m = len(A)
+    n = len(A[0])
+    L= np.zeros((n,m))
+    U = np.zeros((n, m))
+    A = np.array(A)
+    M = A
 
     for i in range(n):
+        L[i][i] = 1
         for j in range(i+1, n):
-            if M[j][i] == 0:
+            if M[i][i] == 0:
                 answer["response"] = "No se puede dividir por cero."
                 return answer
-            r = M[j][i]/M[i][i]
+            r = M[j][i] / M[i][i]
             L[j][i] = r
-            for k in range(i, n):
+            for k in range(i+1, n):
                 M[j][k] -= r * M[i][k]
-            
-        for j in range(i, n):
-            U[i][k] = M[i][k]
 
-        for j in range(i+1, n):
-            U[i+1][j]=M[i+1][j]
-        answer["pasos"].append({"M": M,
-                                "L": L,
-                                "U": U})
-    U[n][n] = M[n][n]
+            for k in range(i, n):
+                U[i][k] = M[i][k]
 
-    z = sustitucionprogresiva.calcular([L, b])
-    x = sustitucionregresiva.calcular([U, z])
+        answer["pasos"].append({"M": M.tolist(),
+                                "L": L.tolist(),
+                                "U": U.tolist()})
 
-    answer["response"] = {"M": M,
-                          "L": L,
-                          "U": U,
-                          "z": z,
-                          "x": x}
+    z = sustitucionprogresiva.calcular(L, b)
+
+    Uz = np.column_stack((U, z))
+    x = sustitucionregresiva.calcular(Uz)
+
+    answer["response"] = {"M": M.tolist(),
+                          "L": L.tolist(),
+                          "U": U.tolist(),
+                          "z": z.tolist(),
+                          "x": x.tolist()}
     return answer

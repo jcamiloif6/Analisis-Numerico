@@ -22,16 +22,18 @@ def calcular(A, b):
             aux2 = sum(L[i][k] * U[k][j] for k in range(1, i-1))
             U[i][j] = (A[i][j] - aux2) / L[i][i]
         answer["pasos"].append({"A": A,
-                                "L": L,
-                                "U": U})
+                                "L": L.tolist(),
+                                "U": U.tolist()})
 
-    z = sustitucionprogresiva.calcular([L, b])
-    x = sustitucionregresiva.calcular([U, z])
+    z = sustitucionprogresiva.calcular(L, b)
+
+    Uz = np.column_stack((U, z))
+    x = sustitucionregresiva.calcular(Uz)
 
     answer["response"] = {"A": A,
-                          "L": L,
-                          "U": U,
-                          "z": z,
-                          "x": x}
+                          "L": L.tolist(),
+                          "U": U.tolist(),
+                          "z": z.tolist(),
+                          "x": x.tolist()}
 
     return answer

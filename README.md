@@ -26,17 +26,26 @@ Para especificar puerto agregar el puerto al final del comando.
 
 ``python manage.py runserver 8080``
 
-- [X] Busquedas Incrementales
-- [X] Biseccion
-- [X] Regla Falsa
-- [X] Punto Fijo
-- [X] Secante
-- [X] Raices Multiples
-- [X] Newton
-- [X] Eliminación Gaussiana Simple
-- [X] Factorización LU con Eliminación Gaussiana Simple
-- [X] Crout
-- [X] Doolittle
-- [X] Cholesky
-- [X] Gauss-Seidel
-- [X] Jacobi
+## Ecuaciones no lineales
+- [X] Busquedas Incrementales [X]
+- [X] Biseccion [X]
+- [X] Regla Falsa [X]
+- [X] Punto Fijo [X]
+- [X] Newton [X]
+- [X] Secante [X]
+- [X] Raices Multiples [X]
+## Ecuaciones lineales
+- [X] Eliminación Gaussiana Simple [X] revisar enteros vs float
+- [] PIVOTEEOOOOOOO
+- [X] Factorización LU con Eliminación Gaussiana Simple [X]
+- [X] Crout [X]
+- [X] Doolittle [X]
+- [X] Cholesky []
+- [X] Gauss-Seidel []
+- [X] Jacobi []
+## Interpolacion
+- [X] Vandermonde []
+- [X] Diferencias Divididas []
+- [X] Lagrange []
+- [] Spline lineal []
+- [] Spline cubico []

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple, factorizacionlu, crout, doolittle, gaussseidel, jacobi
+from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple, factorizacionlu, crout, doolittle, cholesky, gaussseidel, jacobi
 
 # Create your views here.
 def index(request):
@@ -22,43 +22,43 @@ def bisection(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def newton(request):
+def end_newton(request):
     body = json.loads(request.body)
     fn = body['fn']
     x0 = float(body['x0'])
-    n = float(body['n'])
+    nMax = float(body['nMax'])
     tol = float(body['tol'])
 
-    response = newton.calcular(fn, x0, n, tol)
+    response = newton.calcular(fn, x0, nMax, tol)
 
     return JsonResponse(response)
 
 @csrf_exempt
-def puntofijo(request):
+def punto_fijo(request):
     body = json.loads(request.body)
     gn = body['gn']
     x0 = float(body['x0'])
-    n = float(body['n'])
+    nMax = float(body['nMax'])
     tol = float(body['tol'])
 
-    response = puntofijo.calcular(gn, x0, n, tol)
+    response = puntofijo.calcular(gn, x0, nMax, tol)
 
     return JsonResponse(response)
 
 @csrf_exempt
-def busquedasincrementales(request):
+def busquedas_incrementales(request):
     body = json.loads(request.body)
-    fn = body['fn']
+    fn = str(body['fn'])
     x0 = float(body['x0'])
     h = float(body['h'])
     nMax = float(body['nMax'])
 
-    response = busquedasincrementales.calcular(gn, x0, h, nMax)
+    response = busquedasincrementales.calcular(fn, x0, h, nMax)
 
     return JsonResponse(response)
 
 @csrf_exempt
-def reglafalsa(request):
+def regla_falsa(request):
     body = json.loads(request.body)
     fn = body['fn']
     a = float(body['a'])
@@ -71,7 +71,7 @@ def reglafalsa(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def secante(request):
+def end_secante(request):
     body = json.loads(request.body)
     fn = body['fn']
     x0 = float(body['x0'])
@@ -84,16 +84,14 @@ def secante(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def raicesmultiples(request):
+def raices_multiples(request):
     body = json.loads(request.body)
     fn = body['fn']
-    df = body['df']
-    d2f = body['d2f']
     x0 = float(body['x0'])
     tol = float(body['tol'])
     nMax = float(body['nMax'])
 
-    response = raicesmultiples.calcular(fn, df, d2f, x0, tol, nMax)
+    response = raicesmultiples.calcular(fn, x0, tol, nMax)
 
     return JsonResponse(response)
 
@@ -118,7 +116,7 @@ def fac_lu_simple(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def crout(request):
+def end_crout(request):
     body = json.loads(request.body)
     A = body['A']
     b = body['b']
@@ -128,7 +126,7 @@ def crout(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def doolittle(request):
+def end_doolittle(request):
     body = json.loads(request.body)
     A = body['A']
     b = body['b']
@@ -138,7 +136,7 @@ def doolittle(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def cholesky(request):
+def end_cholesky(request):
     body = json.loads(request.body)
     A = body['A']
     b = body['b']
@@ -161,7 +159,7 @@ def gauss_seidel(request):
     return JsonResponse(response)
 
 @csrf_exempt
-def jacobi(request):
+def end_jacobi(request):
     body = json.loads(request.body)
     A = body['A']
     b = body['b']

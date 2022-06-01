@@ -1,5 +1,4 @@
-from math import *
-import sympy as sp
+from sympy import symbols, lambdify, sympify
 
 def calcular(fn, a, b, tol, nMax):
     answer = {
@@ -9,8 +8,8 @@ def calcular(fn, a, b, tol, nMax):
     ite = 0
     error = tol + 1
 
-    x = sp.symbols("x")
-    f = sp.lambdify(x, fn)
+    x = symbols("x")
+    f = lambdify(x, sympify(fn))
     fa = f(a)
     fb = f(b)
     pm=(fb * a - fa * b) / (fb - fa)
@@ -22,14 +21,16 @@ def calcular(fn, a, b, tol, nMax):
         else:
             a = pm
         p0 = pm
+        if (f(b) - f(a)) == 0:
+            break
         pm = (f(b) * a - f(a) * b) / (f(b) - f(a))
         fpm = f(pm)
         error = abs(pm - p0)
 
-        answer["pasos"].append('iteracion (' + ite + ') x=' + pm + ', error=' + error)
+        answer["pasos"].append('iteracion (' + str(ite) + ') x=' + str(pm) + ', error=' + str(error))
 
         ite += 1
         
-    answer["response"] = 'Finalizado en iteracion (' + ite + ') x=' + pm + ', error=' + error
+    answer["response"] = 'Finalizado en iteracion (' + str(ite) + ') x=' + str(pm) + ', error=' + str(error)
 
     return answer
