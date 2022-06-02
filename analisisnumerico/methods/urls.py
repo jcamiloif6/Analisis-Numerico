@@ -20,4 +20,6 @@ urlpatterns = [
     path('jacobi', views.end_jacobi, name='end_jacobi'),
     path('vandermonde', views.end_vandermonde, name='end_vandermonde'),
     path('interpolacion-newton', views.interpolacion_newton, name='interpolacion_newton'),
+    path('lagrange', views.end_lagrange, name='end_lagrange'),
+    path('splines-cuadratico', views.splines_cuadratico, name='splines_cuadratico'),
 ]

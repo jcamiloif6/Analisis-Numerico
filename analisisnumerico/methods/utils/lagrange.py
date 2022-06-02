@@ -1,7 +1,11 @@
 import numpy as np
-from interpolacion_utils import is_valid
+from .interpolacion_utils import is_valid
 
 def calcular(X, Y, x_point):
+    answer = {
+        "response": {},
+        "pasos": []}
+
     if not is_valid(X):
         raise Exception("Cada punto en X debe ser unico")
 
@@ -16,5 +20,7 @@ def calcular(X, Y, x_point):
             if i != j:
                 p = p * (x_point - X[j]) / (X[i] - X[j])
         y_point += p * Y[i]
+        answer["pasos"].append(y_point)
     
-    return y_point
+    answer["response"] = {"y": y_point}
+    return answer

@@ -18,7 +18,6 @@ def calcular(X, Y):
     gaussian = eliminaciongaussianasimple.calcular(x, Y)
     
     answer["response"] = {"vandermonde": x.tolist(),
-                          "a": gaussian["response"]["x"]
-    }
+                          "a": gaussian["response"]["x"]}
 
     return answer

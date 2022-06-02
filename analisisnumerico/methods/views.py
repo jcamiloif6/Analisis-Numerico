@@ -3,7 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple, factorizacionlu, crout, doolittle, cholesky, gaussseidel, jacobi, vandermonde, interpolacionnewton
+from methods.utils import biseccion, newton, puntofijo, \
+                        busquedasincrementales, reglafalsa, \
+                        secante, raicesmultiples, eliminaciongaussianasimple, \
+                        factorizacionlu, crout, doolittle, cholesky, gaussseidel, \
+                        jacobi, vandermonde, interpolacionnewton, lagrange, splinescuadratico
 
 # Create your views here.
 def index(request):
@@ -191,7 +195,24 @@ def interpolacion_newton(request):
     else:
         r = None
 
-    # coef = interpolacionnewton.diferencia_dividida(x, y)
-    # response = interpolacionnewton.polinomio_newton(coef, y, r)
-
     return JsonResponse(interpolacionnewton.calcular(x, y, r))
+
+@csrf_exempt
+def end_lagrange(request):
+    body = json.loads(request.body)
+    x = body['X']
+    y = body['Y']
+    if "r" in body.keys():
+        r = body['r']
+    else:
+        r = None
+
+    return JsonResponse(lagrange.calcular(x, y, r))
+
+@csrf_exempt
+def splines_cuadratico(request):
+    body = json.loads(request.body)
+    x = body['X']
+    y = body['Y']
+
+    return JsonResponse(splinescuadratico.calcular(x, y))
