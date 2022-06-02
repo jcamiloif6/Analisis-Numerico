@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple, factorizacionlu, crout, doolittle, cholesky, gaussseidel, jacobi
+from methods.utils import biseccion, newton, puntofijo, busquedasincrementales, reglafalsa, secante, raicesmultiples, eliminaciongaussianasimple, factorizacionlu, crout, doolittle, cholesky, gaussseidel, jacobi, vandermonde, interpolacionnewton
 
 # Create your views here.
 def index(request):
@@ -150,11 +150,11 @@ def gauss_seidel(request):
     body = json.loads(request.body)
     A = body['A']
     b = body['b']
-    x = body['x']
+    x0 = body['x0']
     tol = body['tol']
     nMax = body['nMax']
 
-    response = gaussseidel.calcular(A, b, x, tol, nMax)
+    response = gaussseidel.calcular(A, b, x0, tol, nMax)
 
     return JsonResponse(response)
 
@@ -163,10 +163,32 @@ def end_jacobi(request):
     body = json.loads(request.body)
     A = body['A']
     b = body['b']
-    x = body['x']
+    x0 = body['x0']
     tol = body['tol']
     nMax = body['nMax']
 
-    response = jacobi.calcular(A, b, x, tol, nMax)
+    response = jacobi.calcular(A, b, x0, tol, nMax)
 
     return JsonResponse(response)
+
+@csrf_exempt
+def end_vandermonde(request):
+    body = json.loads(request.body)
+    x = body['X']
+    y = body['Y']
+
+    response = vandermonde.calcular(x, y)
+
+    return JsonResponse(response)
+
+@csrf_exempt
+def interpolacion_newton(request):
+    body = json.loads(request.body)
+    x = body['X']
+    y = body['Y']
+    r = body['r']
+
+    # coef = interpolacionnewton.diferencia_dividida(x, y)
+    # response = interpolacionnewton.polinomio_newton(coef, y, r)
+
+    return JsonResponse(interpolacionnewton.calcular(x, y, r))

@@ -18,4 +18,6 @@ urlpatterns = [
     path('cholesky', views.end_cholesky, name='end_cholesky'),
     path('gauss-seidel', views.gauss_seidel, name='gauss_seidel'),
     path('jacobi', views.end_jacobi, name='end_jacobi'),
+    path('vandermonde', views.end_vandermonde, name='end_vandermonde'),
+    path('interpolacion-newton', views.interpolacion_newton, name='interpolacion_newton'),
 ]

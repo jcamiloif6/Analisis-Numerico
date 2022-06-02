@@ -1,6 +1,8 @@
 from numpy import linalg as LNG
 import numpy as np
-from interpolacion_utils import is_valid
+from .interpolacion_utils import is_valid
+from . import eliminaciongaussianasimple
+from numpy.polynomial import chebyshev as C
 
 def calcular(X, Y):
     answer = {
@@ -12,11 +14,11 @@ def calcular(X, Y):
         return answer
 
     x = np.vander(X)
-    y = np.vander(Y)
 
-    answer["pasos"].append({"x": x,
-                            "y": y})
+    gaussian = eliminaciongaussianasimple.calcular(x, Y)
     
-    answer["response"] = LNG.det(x)
+    answer["response"] = {"vandermonde": x.tolist(),
+                          "a": gaussian["response"]["x"]
+    }
 
     return answer

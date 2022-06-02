@@ -40,11 +40,11 @@ Para especificar puerto agregar el puerto al final del comando.
 - [X] Factorización LU con Eliminación Gaussiana Simple [X]
 - [X] Crout [X]
 - [X] Doolittle [X]
-- [X] Cholesky []
-- [X] Gauss-Seidel []
-- [X] Jacobi []
+- [X] Cholesky [X]
+- [X] Gauss-Seidel [] Review
+- [X] Jacobi [X] Review
 ## Interpolacion
-- [X] Vandermonde []
+- [X] Vandermonde [X]
 - [X] Diferencias Divididas []
 - [X] Lagrange []
 - [] Spline lineal []
