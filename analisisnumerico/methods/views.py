@@ -7,7 +7,8 @@ from methods.utils import biseccion, newton, puntofijo, \
                         busquedasincrementales, reglafalsa, \
                         secante, raicesmultiples, eliminaciongaussianasimple, \
                         factorizacionlu, crout, doolittle, cholesky, gaussseidel, \
-                        jacobi, vandermonde, interpolacionnewton, lagrange, splinescuadratico
+                        jacobi, vandermonde, interpolacionnewton, lagrange, splinescuadratico, \
+                        pivoteoparcial, pivoteototal
 
 # Create your views here.
 def index(request):
@@ -106,6 +107,26 @@ def gauss_simple(request):
     b = body['b']
 
     response = eliminaciongaussianasimple.calcular(A, b)
+
+    return JsonResponse(response)
+
+@csrf_exempt
+def pivoteo_parcial(request):
+    body = json.loads(request.body)
+    A = body['A']
+    b = body['b']
+
+    response = pivoteoparcial.calcular(A, b)
+
+    return JsonResponse(response)
+
+@csrf_exempt
+def pivoteo_total(request):
+    body = json.loads(request.body)
+    A = body['A']
+    b = body['b']
+
+    response = pivoteototal.calcular(A, b)
 
     return JsonResponse(response)
 

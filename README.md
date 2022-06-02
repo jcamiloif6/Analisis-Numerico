@@ -36,7 +36,8 @@ Para especificar puerto agregar el puerto al final del comando.
 - [X] Raices Multiples [X]
 ## Ecuaciones lineales
 - [X] Eliminación Gaussiana Simple [X] revisar enteros vs float
-- [] PIVOTEEOOOOOOO
+- [X] Pivoteo Parcial [X]
+- [X] Pivoteo Total [X]
 - [X] Factorización LU con Eliminación Gaussiana Simple [X]
 - [X] Crout [X]
 - [X] Doolittle [X]
@@ -46,6 +47,5 @@ Para especificar puerto agregar el puerto al final del comando.
 ## Interpolacion
 - [X] Vandermonde [X]
 - [X] Diferencias Divididas [X]
-- [X] Lagrange []
-- [] Spline lineal []
-- [] Spline cubico []
+- [X] Lagrange [X]
+- [X] Spline cuadrado [X]
