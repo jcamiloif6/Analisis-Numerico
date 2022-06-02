@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def calcular(A, b):
     answer = {
         "response": {},
