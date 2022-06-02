@@ -186,7 +186,10 @@ def interpolacion_newton(request):
     body = json.loads(request.body)
     x = body['X']
     y = body['Y']
-    r = body['r']
+    if "r" in body.keys():
+        r = body['r']
+    else:
+        r = None
 
     # coef = interpolacionnewton.diferencia_dividida(x, y)
     # response = interpolacionnewton.polinomio_newton(coef, y, r)

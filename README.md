@@ -45,7 +45,7 @@ Para especificar puerto agregar el puerto al final del comando.
 - [X] Jacobi [X] Review
 ## Interpolacion
 - [X] Vandermonde [X]
-- [X] Diferencias Divididas []
+- [X] Diferencias Divididas [X]
 - [X] Lagrange []
 - [] Spline lineal []
 - [] Spline cubico []

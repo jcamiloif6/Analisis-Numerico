@@ -6,9 +6,6 @@ def polinomio_newton(a, x, r):
     answer = {
         "response": {},
         "pasos": []}
-
-    if not is_valid(x):
-        raise Exception("Cada punto en X debe ser unico")
     
     n = len(a) - 1
     p = a[n]
@@ -48,11 +45,20 @@ def diferencia_dividida(X, Y):
     return a
 
 def calcular(X, Y, r):
+    response = {"a": [],
+                "p": "No hay nuevo punto a encontrar"}
     if not is_valid(X):
         raise Exception("Cada punto en X debe ser unico")
 
     X = np.copy(X)
     Y = np.copy(Y)
+    p = 0
 
     a_s = diferencia_dividida(X, Y)[0, :]
-    return {"test": a_s.tolist()}
+    response["a"] = a_s.tolist()
+
+    if r is not None:
+        p = polinomio_newton(a_s, X, r)
+        response["p"] = p
+    
+    return response
